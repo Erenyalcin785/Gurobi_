@@ -1,6 +1,6 @@
 Proje Özeti
 
-Bu proje, 30 uçuşun 8 uçak(Veriler lisans probleminden dolayı küçültülmüştür) arasında zaman çakışması olmadan atanmasını amaçlayan uçuş atama problemini ele alır. Aynı veri seti üzerinde dört farklı yöntem uygulanmış ve performansları karşılaştırılmıştır: Gurobi, Simulated Annealing (SA), Tabu Search (TS) ve Genetic Algorithm (GA). Maliyet tüm yöntemlerde sabit olduğu için değerlendirme çözüm süresi, kararlılık ve arama davranışı üzerine odaklanmıştır.
+Bu proje, 30 uçuşun 8 uçak (Veriler lisans probleminden dolayı küçültülmüştür) arasında zaman çakışması olmadan atanmasını amaçlayan uçuş atama problemini ele alır. Aynı veri seti üzerinde dört farklı yöntem uygulanmış ve performansları karşılaştırılmıştır: Gurobi, Simulated Annealing (SA), Tabu Search (TS) ve Genetic Algorithm (GA). Maliyet tüm yöntemlerde sabit olduğu için değerlendirme çözüm süresi, kararlılık ve arama davranışı üzerine odaklanmıştır.
 
 Problem Tanımı
 
