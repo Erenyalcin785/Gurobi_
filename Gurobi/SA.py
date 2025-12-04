@@ -3,12 +3,10 @@ import random
 import math
 import time
 
-# === Yardımcı: Zamanı dakikaya çevir ===
 def to_minutes(t):
     h, m = map(int, t.strip().split(":"))
     return h * 60 + m
 
-# === Veriyi oku ===
 data = []
 with open("C:/Users/MONSTER/Desktop/flights.txt", "r") as file:
     for line in file:
@@ -25,12 +23,10 @@ with open("C:/Users/MONSTER/Desktop/flights.txt", "r") as file:
 
 df = pd.DataFrame(data)
 
-# === Parametreleri sınırla ===
-df = df.head(30)        # 🔽 30 uçuş
-max_planes = 8          # 🔽 8 uçak
+df = df.head(30)        #  30 uçuş
+max_planes = 8          #  8 uçak
 n_flights = len(df)
 
-# === Çakışan uçuşları belirle ===
 conflict = {}
 for i in range(n_flights):
     for k in range(i + 1, n_flights):
@@ -68,7 +64,6 @@ def neighbor(solution):
     new[i] = random.randint(0, max_planes - 1)
     return new
 
-# === Geçerli mi kontrol et ===
 def is_valid(solution):
     for (i, k) in conflict:
         if solution[i] == solution[k]:
@@ -100,12 +95,10 @@ def simulated_annealing():
         T *= alpha
     return best, best_cost
 
-# === Ana Çalıştırma ===
 start = time.time()
 solution, total_cost = simulated_annealing()
 end = time.time()
 
-# === Çıktılar ===
 print(f"\nSA Toplam Maliyet (USD): {total_cost}\n")
 
 for i in range(n_flights):
@@ -114,3 +107,4 @@ for i in range(n_flights):
     print(f"Uçuş {i}: {info} → Uçak {plane}")
 
 print(f"\nÇözüm Süresi: {end - start:.2f} saniye")
+
