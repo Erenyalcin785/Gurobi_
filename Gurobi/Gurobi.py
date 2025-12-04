@@ -2,12 +2,10 @@ from gurobipy import Model, GRB
 import pandas as pd
 import time
 
-# === A. Yardımcı Fonksiyon: Saati dakikaya çevir ===
 def to_minutes(t):
     h, m = map(int, t.strip().split(":"))
     return h * 60 + m
 
-# === B. flights.txt Dosyasını Oku ===
 data = []
 with open("C:/Users/MONSTER/Desktop/flights.txt", "r") as file:
     for line in file:
@@ -24,12 +22,10 @@ with open("C:/Users/MONSTER/Desktop/flights.txt", "r") as file:
 
 df = pd.DataFrame(data)
 
-# === C. Modeli Küçült ===
 df = df.head(30)      # İlk 30 uçuş
 n_flights = len(df)
 max_planes = 8         # En fazla 8 uçak kullanılabilir
 
-# === D. Çakışma Tespiti ===
 conflict = {}
 for i in range(n_flights):
     for k in range(i + 1, n_flights):
@@ -75,12 +71,10 @@ for i in range(n_flights):
     for j in range(max_planes):
         model.addConstr(x[i, j] <= y[j])
 
-# === H. Modeli Optimize Et ===
 start = time.time()
 model.optimize()
 end = time.time()
 
-# === I. Sonuçları Yazdır ===
 if model.status == GRB.OPTIMAL:
     print(f"\nGurobi Toplam Maliyet (USD): {model.ObjVal}\n")
     for i in range(n_flights):
@@ -91,3 +85,4 @@ if model.status == GRB.OPTIMAL:
     print(f"\nÇözüm Süresi: {end - start:.2f} saniye")
 else:
     print("Optimal çözüm bulunamadı.")
+
