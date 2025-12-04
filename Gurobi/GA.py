@@ -2,12 +2,10 @@ import random
 import pandas as pd
 import time
 
-# === Helper Function: Convert time to minutes ===
 def to_minutes(t):
     h, m = map(int, t.strip().split(":"))
     return h * 60 + m
 
-# === Read flight data ===
 data = []
 with open("C:/Users/MONSTER/Desktop/flights.txt", "r") as file:
     for line in file:
@@ -23,12 +21,11 @@ with open("C:/Users/MONSTER/Desktop/flights.txt", "r") as file:
         })
 
 df = pd.DataFrame(data)
-df = df.head(30)  # Limit to 30 flights
+df = df.head(30)  
 
 n_flights = len(df)
 max_planes = 8
 
-# === Detect Conflicts ===
 conflict = {}
 for i in range(n_flights):
     for k in range(i + 1, n_flights):
@@ -102,10 +99,10 @@ for generation in range(generations):
 end_time = time.time()
 duration = end_time - start_time
 
-# === Print Results ===
 print(f"\nGA Total Cost (USD): {best_cost:.1f}\n")
 for i in range(n_flights):
     f = df.loc[i]
     print(f"Uçuş {i}: {f['origin']} → {f['destination']} ({f['dep_time']} - {f['arr_time']}) → Uçak {best_solution[i]}")
 
 print(f"\nÇözüm Süresi: {duration:.2f} seconds")
+
