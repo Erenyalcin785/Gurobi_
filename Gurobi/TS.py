@@ -2,12 +2,10 @@ import pandas as pd
 import random
 import time
 
-# === Yardımcı: Zamanı dakikaya çevir ===
 def to_minutes(t):
     h, m = map(int, t.strip().split(":"))
     return h * 60 + m
 
-# === Veriyi oku ===
 data = []
 with open("C:/Users/MONSTER/Desktop/flights.txt", "r") as file:
     for line in file:
@@ -24,12 +22,10 @@ with open("C:/Users/MONSTER/Desktop/flights.txt", "r") as file:
 
 df = pd.DataFrame(data)
 
-# === Parametreleri ayarla ===
-df = df.head(30)         # 🔽 30 uçuş
+df = df.head(30)         #  30 uçuş
 n_flights = len(df)
-max_planes = 8           # 🔽 8 uçak
+max_planes = 8           #  8 uçak
 
-# === Çakışan uçuşları belirle ===
 conflict = {}
 for i in range(n_flights):
     for k in range(i + 1, n_flights):
@@ -67,7 +63,6 @@ def get_neighbors(sol):
                     neighbors.append(new_sol)
     return neighbors
 
-# === Çözüm geçerli mi? ===
 def is_valid(sol):
     for (i, k) in conflict:
         if sol[i] == sol[k]:
@@ -104,7 +99,6 @@ def tabu_search(max_iter=150, tabu_tenure=10):
 
     return best, best_cost
 
-# === Çalıştır ve Sonuçları Yazdır ===
 start = time.time()
 solution, total_cost = tabu_search()
 end = time.time()
@@ -116,3 +110,4 @@ for i in range(n_flights):
     info = f"{df.loc[i, 'origin']} → {df.loc[i, 'destination']} ({df.loc[i, 'dep_time']} - {df.loc[i, 'arr_time']})"
     print(f"Uçuş {i}: {info} → Uçak {plane}")
 print(f"\nÇözüm Süresi: {end - start:.2f} saniye")
+
