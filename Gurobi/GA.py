@@ -34,7 +34,6 @@ for i in range(n_flights):
         if not (a_end <= b_start or b_end <= a_start):
             conflict[(i, k)] = True
 
-# === GA Parameters ===
 population_size = 60
 generations = 150
 mutation_rate = 0.2
@@ -48,7 +47,6 @@ def fitness(assignment):
             penalty += 5000  # conflict penalty
     return total_cost + penalty
 
-# === Initial Population (Pure Random) ===
 def create_population():
     population = []
     for _ in range(population_size):
@@ -105,4 +103,5 @@ for i in range(n_flights):
     print(f"Uçuş {i}: {f['origin']} → {f['destination']} ({f['dep_time']} - {f['arr_time']}) → Uçak {best_solution[i]}")
 
 print(f"\nÇözüm Süresi: {duration:.2f} seconds")
+
 
