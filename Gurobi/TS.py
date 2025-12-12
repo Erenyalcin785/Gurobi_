@@ -47,7 +47,7 @@ def generate_valid_solution():
             return None
     return assignment
 
-# === Maliyet fonksiyonu ===
+
 def cost(sol):
     return sum(df.loc[i, "price"] for i in range(n_flights) if sol[i] != -1)
 
@@ -110,4 +110,5 @@ for i in range(n_flights):
     info = f"{df.loc[i, 'origin']} → {df.loc[i, 'destination']} ({df.loc[i, 'dep_time']} - {df.loc[i, 'arr_time']})"
     print(f"Uçuş {i}: {info} → Uçak {plane}")
 print(f"\nÇözüm Süresi: {end - start:.2f} saniye")
+
 
