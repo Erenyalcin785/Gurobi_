@@ -71,7 +71,6 @@ def mutate(individual):
             individual[i] = random.randint(0, max_planes - 1)
     return individual
 
-# === GA Main Loop ===
 start_time = time.time()
 
 population = create_population()
@@ -103,5 +102,6 @@ for i in range(n_flights):
     print(f"Uçuş {i}: {f['origin']} → {f['destination']} ({f['dep_time']} - {f['arr_time']}) → Uçak {best_solution[i]}")
 
 print(f"\nÇözüm Süresi: {duration:.2f} seconds")
+
 
 
