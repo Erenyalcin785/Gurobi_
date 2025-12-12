@@ -53,7 +53,6 @@ def generate_valid_solution():
             return None  # Geçerli atama bulunamadı
     return assignment
 
-# === Maliyet hesapla ===
 def cost(solution):
     return sum(df.loc[i, "price"] for i in range(n_flights) if solution[i] != -1)
 
@@ -107,4 +106,5 @@ for i in range(n_flights):
     print(f"Uçuş {i}: {info} → Uçak {plane}")
 
 print(f"\nÇözüm Süresi: {end - start:.2f} saniye")
+
 
